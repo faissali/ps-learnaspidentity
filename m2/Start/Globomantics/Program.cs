@@ -9,6 +9,11 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSingleton<IConferenceRepository, ConferenceRepository>();
 builder.Services.AddSingleton<IProposalRepository, ProposalRepository>();
+builder.Services.AddSingleton<IUserRepository, UserRepository>();
+
+
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie();
 
 var app = builder.Build();
 
