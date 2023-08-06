@@ -23,7 +23,7 @@ public class ProposalController : Controller
         ViewBag.Title = $"Speaker - Proposals For Conference {conference!.Name} {conference.Location}";
         ViewBag.ConferenceId = conferenceId;
 
-        return View(proposalRepo.GetAllForConference(conferenceId));
+        return View(await proposalRepo.GetAllForConference(conferenceId));
     }
 
     public IActionResult AddProposal(int conferenceId)
