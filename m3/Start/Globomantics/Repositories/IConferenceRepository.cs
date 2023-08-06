@@ -4,7 +4,7 @@ namespace Globomantics.Repositories;
 
 public interface IConferenceRepository
 {
-    int Add(ConferenceModel model);
-    IEnumerable<ConferenceModel> GetAll();
-    ConferenceModel GetById(int id);
+    Task<int> Add(ConferenceModel model);
+    Task<IEnumerable<ConferenceModel>> GetAll();
+    Task<ConferenceModel?> GetById(int id);
 }

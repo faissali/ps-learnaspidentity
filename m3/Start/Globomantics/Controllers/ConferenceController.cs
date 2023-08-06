@@ -13,10 +13,10 @@ public class ConferenceController : Controller
         this.repo = repo;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
         ViewBag.Title = "Organizer - Conference Overview";
-        return View(repo.GetAll());
+        return View(await repo.GetAll());
     }
 
     public IActionResult Add()
@@ -26,10 +26,10 @@ public class ConferenceController : Controller
     }
 
     [HttpPost]
-    public IActionResult Add(ConferenceModel model)
+    public async Task<IActionResult> Add(ConferenceModel model)
     {
         if (ModelState.IsValid)
-            repo.Add(model);
+            await repo.Add(model);
 
         return RedirectToAction("Index");
     }

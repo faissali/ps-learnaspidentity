@@ -4,7 +4,7 @@ namespace Globomantics.Repositories;
 
 public interface IProposalRepository
 {
-    int Add(ProposalModel model);
-    ProposalModel Approve(int proposalId);
-    IEnumerable<ProposalModel> GetAllForConference(int conferenceId);
+    Task<int> Add(ProposalModel model);
+    Task<ProposalModel> Approve(int proposalId);
+    Task<IEnumerable<ProposalModel>> GetAllForConference(int conferenceId);
 }
