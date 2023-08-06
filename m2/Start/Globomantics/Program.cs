@@ -12,13 +12,17 @@ builder.Services.AddSingleton<IProposalRepository, ProposalRepository>();
 builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 
-builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie()
-    .AddGoogle( o =>
-    {
-        o.ClientId = builder.Configuration["Google:ClientId"];
-        o.ClientSecret = builder.Configuration["Google:ClientSecret"];
-    });
+builder.Services.AddAuthentication(o =>
+{
+    o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+})
+.AddCookie()
+.AddGoogle(o =>
+{
+    o.ClientId = builder.Configuration["Google:ClientId"];
+    o.ClientSecret = builder.Configuration["Google:ClientSecret"];
+});
 
 var app = builder.Build();
 
