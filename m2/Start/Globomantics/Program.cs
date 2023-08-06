@@ -15,7 +15,7 @@ builder.Services.AddSingleton<IUserRepository, UserRepository>();
 builder.Services.AddAuthentication(o =>
 {
     o.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-    o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+    //o.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
 })
 .AddCookie()
 .AddGoogle(o =>
