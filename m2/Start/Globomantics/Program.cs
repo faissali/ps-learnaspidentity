@@ -13,7 +13,12 @@ builder.Services.AddSingleton<IUserRepository, UserRepository>();
 
 
 builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-    .AddCookie();
+    .AddCookie()
+    .AddGoogle( o =>
+    {
+        o.ClientId = builder.Configuration["Google:ClientId"];
+        o.ClientSecret = builder.Configuration["Google:ClientSecret"];
+    });
 
 var app = builder.Build();
 
